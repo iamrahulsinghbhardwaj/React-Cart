@@ -30,8 +30,35 @@ class Cart extends React.Component{
         }
 
         //this.increaseQuantity=this.increaseQuantity.bind(this); or we can use arrow function
+    }
+
+    handleIncreaseQuantity=(product)=>{
+       const {products}=this.state;
+       const index=products.indexOf(product);
+
+       products[index].qty+=1;
+
+       this.setState({
+           products:products
+       })
+
 
     }
+
+    handleDecreaseQuantity=(product)=>{
+        const {products}=this.state;
+        const index=products.indexOf(product);
+        
+        if(products[index].qty==0){
+            return;
+        }
+        products[index].qty-=1;
+
+        this.setState({
+            products:products
+        })
+    }
+
     render(){
         const {products}=this.state;
         return (
@@ -40,10 +67,8 @@ class Cart extends React.Component{
                     return <CartItem 
                      product={product}
                      key={product.id} 
-                     func={()=>console.log('Hello')}
-                     isLogedIn={false}
-                     jsx={<h1>Test</h1>}
-                     
+                     onIncreaseQuantity={this.handleIncreaseQuantity}
+                     onDecreaseQuantity={this.handleDecreaseQuantity}  
                      />
                 })}
             </div>
