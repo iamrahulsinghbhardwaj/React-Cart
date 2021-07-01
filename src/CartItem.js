@@ -2,7 +2,7 @@ import React from 'react';
 
 class CartItem extends React.Component{
     render(){
-        console.log('this.props',this.props);
+        
 
         const {price,title,qty}=this.props.product;
 
