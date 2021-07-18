@@ -68,9 +68,9 @@ class App extends React.Component {
         const {products}=this.state;
         const index=products.indexOf(product);
         
-        // if(products[index].qty==0){
-        //     return;
-        // }
+        if(products[index].qty==0){
+            return;
+        }
         // products[index].qty-=1;
 
         // this.setState({
